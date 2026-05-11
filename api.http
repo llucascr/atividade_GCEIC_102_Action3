@@ -17,3 +17,16 @@ Content-Type: application/json
     "dividendPerShare": 5.00,
     "earningsPerShare": 20.00
 }
+
+###
+POST http://localhost:3000/calculate/drip
+Content-Type: application/json
+
+{
+    "initialInvestment": 10000,
+    "annualDividendYield": 4,
+    "years": 10,
+    "frequency": 4,
+    "annualDividendGrowth": 2,
+    "annualShareGrowth": 3
+}
