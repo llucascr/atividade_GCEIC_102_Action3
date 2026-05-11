@@ -1,4 +1,10 @@
 GET http://localhost:3000/health
 
 ###
-GET http://localhost:3000/teste
+POST http://localhost:3000/calcular/yield
+Content-Type: application/json
+
+{
+    "annualDividendPerShare": 5.00,
+    "sharePrice": 300.00
+}
