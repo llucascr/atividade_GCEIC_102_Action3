@@ -12,6 +12,12 @@ interface PayoutRatioResult {
   risk: 'low' | 'moderate' | 'high';
 }
 
+/**
+ * Calcula o Payout Ratio (proporção do lucro distribuído como dividendo) e
+ * o Retention Ratio (parcela retida), além de classificar o risco da política
+ * de dividendos como low, moderate ou high, e indicar se ela é sustentável
+ * (payout <= 75%). Lança erro se o EPS for não-positivo.
+ */
 function computePayoutRatio(
   input: PayoutRatioInput
 ): PayoutRatioResult {
@@ -32,6 +38,11 @@ function computePayoutRatio(
   };
 }
 
+/**
+ * Handler HTTP do endpoint de Payout Ratio. Lê os dados de `req.body`,
+ * delega o cálculo para `computePayoutRatio` e responde com 200 + resultado
+ * em caso de sucesso, ou 400 + mensagem de erro em caso de entrada inválida.
+ */
 export function calculatePayoutRatio(req: Request, res: Response): void {
     try {
         const result = computePayoutRatio(req.body);

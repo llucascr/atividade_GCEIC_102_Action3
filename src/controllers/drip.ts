@@ -16,6 +16,13 @@ interface DRIPResult {
   yearByYear: Array<{ year: number; value: number; dividends: number }>;
 }
 
+/**
+ * Simula um plano DRIP (Dividend Reinvestment Plan) ao longo de N anos com
+ * pagamentos na frequência indicada (anual, trimestral ou mensal), aplicando
+ * opcionalmente crescimento anual de dividendos e de número de cotas.
+ * Retorna o valor futuro, total de dividendos recebidos, retorno total (%) e
+ * a evolução ano a ano.
+ */
 function computeDRIP(input: DRIPInput): DRIPResult {
   const { initialInvestment, annualDividendYield, years, frequency,
           annualDividendGrowth = 0, annualShareGrowth = 0 } = input;
@@ -43,6 +50,11 @@ function computeDRIP(input: DRIPInput): DRIPResult {
   };
 }
 
+/**
+ * Handler HTTP do endpoint DRIP. Lê os dados de `req.body`, delega a simulação
+ * para `computeDRIP` e responde com o resultado em JSON, ou 400 + mensagem
+ * de erro em caso de entrada inválida.
+ */
 export function calculateDRIP(req: Request, res: Response) {
   try {
     const input: DRIPInput = req.body;
