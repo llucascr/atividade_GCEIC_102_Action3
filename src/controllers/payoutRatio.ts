@@ -18,7 +18,7 @@ interface PayoutRatioResult {
  * de dividendos como low, moderate ou high, e indicar se ela é sustentável
  * (payout <= 75%). Lança erro se o EPS for não-positivo.
  */
-function computePayoutRatio(
+export function computePayoutRatio(
   input: PayoutRatioInput
 ): PayoutRatioResult {
   const { dividendPerShare, earningsPerShare } = input;

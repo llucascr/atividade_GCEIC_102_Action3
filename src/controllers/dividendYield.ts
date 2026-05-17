@@ -15,7 +15,7 @@ interface DividendYieldResult {
  * e do preço atual da ação, e classifica o resultado em: low, moderate, high
  * ou very_high. Lança erro se o preço for não-positivo ou o dividendo negativo.
  */
-function computeDividendYield(input: DividendYieldInput): DividendYieldResult {
+export function computeDividendYield(input: DividendYieldInput): DividendYieldResult {
   const { annualDividendPerShare, sharePrice } = input;
 
   if (sharePrice <= 0) throw new Error('Share price must be positive');

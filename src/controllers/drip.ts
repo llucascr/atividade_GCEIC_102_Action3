@@ -26,7 +26,7 @@ interface DRIPResult {
  * já participam dos dividendos do próprio período. O retorno total é
  * calculado sobre o capital efetivamente aportado (inicial + aportes).
  */
-function computeDRIP(input: DRIPInput): DRIPResult {
+export function computeDRIP(input: DRIPInput): DRIPResult {
   const { initialInvestment, annualDividendYield, years, frequency,
           annualDividendGrowth = 0, annualShareGrowth = 0,
           monthlyContribution = 0 } = input;
