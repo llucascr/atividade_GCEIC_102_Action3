@@ -23,10 +23,11 @@ POST http://localhost:3000/calculate/drip
 Content-Type: application/json
 
 {
-    "initialInvestment": 10000,
+    "initialInvestment": 1000,
     "annualDividendYield": 4,
     "years": 10,
-    "frequency": 4,
+    "frequency": 12,
     "annualDividendGrowth": 2,
-    "annualShareGrowth": 3
+    "annualShareGrowth": 3,
+    "monthlyContribution": 100
 }
