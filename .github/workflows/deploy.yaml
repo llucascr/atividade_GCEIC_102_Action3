@@ -12,7 +12,7 @@ jobs:
       api: ${{ steps.changes.outputs.api }}
       app: ${{ steps.changes.outputs.app }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v4
         id: changes
         with:
@@ -30,11 +30,11 @@ jobs:
 
     steps:
       - name: Get Code from repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
       - name: verifica se fez corretamente
         run:  ls -la
       - name: Instala o Node na maquina virtual        
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
       - name: Instala as dependencias do projeto
         working-directory: api 
         run: npm ci
