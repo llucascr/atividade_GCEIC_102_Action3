@@ -49,7 +49,7 @@ jobs:
         if: success() || failure()  # roda de qualquer maneira
         with:
           name: JEST tests
-          path: ./api/j*.xml
+          path: ./api/test/j*.xml
           reporter: jest-junit
 
       - name: Subir a API em background

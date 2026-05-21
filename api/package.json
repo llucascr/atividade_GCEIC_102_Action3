@@ -10,7 +10,7 @@
     "dev": "nodemon --watch src --ext ts --exec \"ts-node src/server.ts\"",
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "jest --coverage"
+    "test": "jest --coverage --verbose --ci --reporters=default --testResultsProcessor=jest-junity"
   },
   "dependencies": {
     "express": "^5.2.1",
