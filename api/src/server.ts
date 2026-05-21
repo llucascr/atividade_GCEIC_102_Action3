@@ -10,7 +10,7 @@ app.get('/health', (req: Request, res: Response) => {
   res.send({ success: true });
 });
 
-app.use('/', dividendosRouter);
+app.use('/api/CDD', dividendosRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
