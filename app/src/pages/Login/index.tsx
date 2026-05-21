@@ -1,7 +1,6 @@
 import { ChartLine } from "lucide-react";
 import { useState } from "react";
-
-const MOCK_USER = { login: "usuario1", password: "1234" };
+import { api } from "../../lib/api";
 
 interface Props { onLogin: () => void; }
 
@@ -9,14 +8,19 @@ export default function LoginPage({ onLogin }: Props) {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    function handleSubmit(e: React.FormEvent) {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        if (login === MOCK_USER.login && password === MOCK_USER.password) {
-            setError("");
+        setError("");
+        setLoading(true);
+        try {
+            await api.login(login, password);
             onLogin();
-        } else {
-            setError("Usuário ou senha invalidos.");
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "Usuário ou senha inválidos.");
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -76,9 +80,10 @@ export default function LoginPage({ onLogin }: Props) {
 
                     <button
                         type="submit"
-                        className="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white rounded-lg py-2.5 text-sm font-medium transition-all"
+                        disabled={loading}
+                        className="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white rounded-lg py-2.5 text-sm font-medium transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                        Entrar
+                        {loading ? "Entrando..." : "Entrar"}
                     </button>
                 </form>
 
