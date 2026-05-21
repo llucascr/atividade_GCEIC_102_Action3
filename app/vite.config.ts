@@ -7,7 +7,8 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    port: 3000
+    port: Number(process.env.PORT) || 3000,
+    host: true
   },
   plugins: [
     react(),

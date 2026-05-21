@@ -16,7 +16,7 @@ export default function LoginPage({ onLogin }: Props) {
             setError("");
             onLogin();
         } else {
-            setError("Usuário ou senha inválidos.");
+            setError("Usuário ou senha invalidos.");
         }
     }
 
@@ -32,7 +32,7 @@ export default function LoginPage({ onLogin }: Props) {
                     <p className="text-[15px] text-gray-500">Plataforma de cálculos financeiros</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form id="loginForm" onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label className="block text-[11px] font-medium text-gray-400 uppercase tracking-widest mb-1.5 text-left">
                             Usuário
@@ -40,6 +40,8 @@ export default function LoginPage({ onLogin }: Props) {
                         <div className="relative">
                             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600"></span>
                             <input
+                                id="username"
+                                name="username"
                                 type="text"
                                 placeholder="Digite seu usuário..."
                                 value={login}
@@ -55,6 +57,8 @@ export default function LoginPage({ onLogin }: Props) {
                         </label>
                         <div className="relative">
                             <input
+                                id="password"
+                                name="password"
                                 type="password"
                                 placeholder="••••••"
                                 value={password}
@@ -65,7 +69,7 @@ export default function LoginPage({ onLogin }: Props) {
                     </div>
 
                     {error && (
-                        <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2 text-[13px] text-red-300">
+                        <div className="erro flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2 text-[13px] text-red-300">
                             {error}
                         </div>
                     )}

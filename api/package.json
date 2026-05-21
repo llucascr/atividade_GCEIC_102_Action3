@@ -9,8 +9,9 @@
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec \"ts-node src/server.ts\"",
     "build": "tsc",
+    "prestart": "npm run build",
     "start": "node dist/server.js",
-    "test": "jest --coverage --verbose --ci --reporters=default --testResultsProcessor=jest-junity"
+    "test": "jest --coverage --verbose --ci"
   },
   "dependencies": {
     "express": "^5.2.1",

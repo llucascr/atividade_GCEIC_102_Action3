@@ -95,7 +95,7 @@ export default function HelpPage() {
   return (
     <main className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-slate-800">Central de Ajuda</h1>
+        <h1 id="help-heading" className="text-3xl font-bold text-slate-800">Central de Ajuda</h1>
         <p className="text-slate-500">Entenda como cada calculadora funciona</p>
       </div>
 
@@ -103,6 +103,7 @@ export default function HelpPage() {
         {calculators.map(c => (
           <button
             key={c.id}
+            id={`help-tab-${c.id}`}
             onClick={() => setActive(c.id)}
             className={`rounded-2xl border p-4 text-left transition-all ${
               active === c.id
@@ -127,7 +128,7 @@ export default function HelpPage() {
         <p className="text-sm text-slate-600 leading-relaxed">{calc.what}</p>
         <div className="rounded-xl px-4 py-3" style={{ backgroundColor: calc.colorBg }}>
           <p className="text-xs font-semibold mb-1" style={{ color: calc.colorText }}>Fórmula</p>
-          <p className="text-sm font-mono font-bold" style={{ color: calc.color }}>{calc.formula}</p>
+          <p id="help-formula" className="text-sm font-mono font-bold" style={{ color: calc.color }}>{calc.formula}</p>
         </div>
       </div>
 
@@ -170,13 +171,14 @@ export default function HelpPage() {
             <h2 className="font-semibold !text-black">Você sabia?</h2>
           </div>
           <button
+            id="help-next-fact"
             onClick={nextFact}
             className="text-xs text-slate-500 border border-slate-200 bg-white rounded-lg px-3 py-1 hover:bg-slate-100 transition-colors"
           >
             próxima →
           </button>
         </div>
-        <p className="text-sm text-slate-600 leading-relaxed">
+        <p id="help-fact-text" className="text-sm text-slate-600 leading-relaxed">
           {calc.facts[factIdx[calc.id]]}
         </p>
         <div className="flex gap-1 mt-3">

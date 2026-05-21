@@ -39,6 +39,7 @@ export default function App() {
       <header className="sticky top-0 z-50 bg-[#181c24]/80 backdrop-blur-xl border-b border-white/[0.07]">
         <div className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between">
           <button
+            id="logo-home"
             onClick={() => setPage("dashboard")}
             className="flex items-center gap-3"
           >
@@ -55,6 +56,7 @@ export default function App() {
             {navItems.map((item) => (
               <button
                 key={item.id}
+                id={`nav-${item.id}`}
                 onClick={() => setPage(item.id)}
                 className={`
                   px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150
@@ -69,6 +71,7 @@ export default function App() {
             ))}
 
             <button
+              id="nav-logout"
               onClick={handleLogout}
               className="ml-2 px-4 py-2 rounded-lg text-sm font-medium text-red-400 hover:bg-red-500/10 transition-all"
             >

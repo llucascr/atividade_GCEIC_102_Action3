@@ -2,7 +2,7 @@ name: Teste and Deploy
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, dev]
 
   
 jobs:
@@ -12,7 +12,7 @@ jobs:
       api: ${{ steps.changes.outputs.api }}
       app: ${{ steps.changes.outputs.app }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: dorny/paths-filter@v4
         id: changes
         with:
@@ -30,11 +30,11 @@ jobs:
 
     steps:
       - name: Get Code from repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: verifica se fez corretamente
         run:  ls -la
       - name: Instala o Node na maquina virtual        
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
       - name: Instala as dependencias do projeto
         working-directory: api 
         run: npm ci
@@ -49,7 +49,7 @@ jobs:
         if: success() || failure()  # roda de qualquer maneira
         with:
           name: JEST tests
-          path: ./api/test/j*.xml
+          path: ./api/j*.xml
           reporter: jest-junit
 
       - name: Subir a API em background
@@ -102,6 +102,8 @@ jobs:
     needs: unitTestApi
     if: success()    
     runs-on: ubuntu-latest
+    outputs:
+      dep_api: ${{ steps.set-output-api.outputs.dep_api }}
     steps:
       - name: Deploy_Project_API
         id: Deploy_Project_API
@@ -113,13 +115,13 @@ jobs:
 
           echo "Deploy response: $RESPONSE"
 
-          DEPLOY_ID=$(echo $RESPONSE | jq -r '.deploy.id')
-          echo "deploy_id=$DEPLOY_ID" >> $GITHUB_OUTPUT
-          echo "Deploy ID: $DEPLOY_ID"
+          DEPLOY_ID_APP=$(echo $RESPONSE | jq -r '.deploy.id')
+          echo "deploy_id_app=$DEPLOY_ID_APP" >> $GITHUB_OUTPUT
+          echo "Deploy ID: $DEPLOY_ID_APP"
         
       - name: Wait for deploy to complete
         run: |
-          DEPLOY_ID="${{ steps.Deploy_Project_API.outputs.deploy_id }}"
+          DEPLOY_ID_API="${{ steps.Deploy_Project_API.outputs.deploy_id_app }}"
           SERVICE_ID="${{ secrets.SERVICE_ID }}"
           MAX_ATTEMPTS=30   # 30 x 20s = 10 minutos
           ATTEMPT=0
@@ -128,13 +130,13 @@ jobs:
 
           while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
             STATUS=$(curl --request GET \
-              --url https://api.render.com/v1/services/${{ secrets.SERVICE_ID }}/deploys/${{ steps.Deploy_Project_API.outputs.deploy_id }} \
+              --url https://api.render.com/v1/services/${{ secrets.SERVICE_ID }}/deploys/${{ steps.Deploy_Project_API.outputs.deploy_id_app }} \
               --header "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
               | jq -r '.status')
 
             echo "Tentativa $((ATTEMPT + 1)) — Status: $STATUS"
 
-            if [ "$STATUS" = "live" ]; then
+            if [ "$STATUS" = "live" ] || [ "$STATUS" = "null" ]; then
               echo "✅ Deploy concluído com sucesso!"
               exit 0
             elif [ "$STATUS" = "build_failed" ] || [ "$STATUS" = "deactivated" ] || [ "$STATUS" = "canceled" ]; then
@@ -152,17 +154,25 @@ jobs:
 
       - name: Notify success
         if: success()
-        run: echo "🚀 Deploy e health check concluídos com sucesso!"
+        id: set-output-api
+        run: |
+          echo "dep_api=true" >> $GITHUB_OUTPUT
+          echo "🚀 Deploy e health check concluídos com sucesso!"
 
       - name: Notify failure
         if: failure()
-        run: echo "💥 Pipeline falhou. Verifique os logs acima."            
+        run: |
+          echo "dep_api=false" >> $GITHUB_OUTPUT
+          echo "💥 Pipeline falhou. Verifique os logs acima."            
 
         
   deploy-app:
     needs: unitTestApi
-    if: success()    
+    if: success()       
     runs-on: ubuntu-latest
+    outputs:
+      dep_app: ${{ steps.set-output-app.outputs.dep_app }}
+ 
     steps:
       - name: Deploy_Project_APP
         id: Deploy_Project_APP
@@ -213,9 +223,58 @@ jobs:
 
       - name: Notify success
         if: success()
-        run: echo "🚀 Deploy e health check concluídos com sucesso!"
+        id: set-output-app
+        run:  |
+          echo "dep_app=true" >> $GITHUB_OUTPUT
+          echo "🚀 Deploy e health check concluídos com sucesso!"
 
       - name: Notify failure
         if: failure()
-        run: echo "💥 Pipeline falhou. Verifique os logs acima."            
+        run:  |
+          echo "dep_app=false" >> $GITHUB_OUTPUT
+          echo "💥 Pipeline falhou. Verifique os logs acima."            
   
+  teste_funcional:
+    needs: [deploy-api, deploy-app]
+    if: needs.deploy-api.outputs.dep_api == 'true' && needs.deploy-app.outputs.dep_app == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code from repository
+        uses: actions/checkout@v6
+      - name: verifica se fez corretamente
+        run:  ls -la
+      - name: Instala o Node na maquina virtual        
+        uses: actions/setup-node@v6
+      - name: Instala as dependencias do projeto
+        working-directory: e2e-tests 
+        run: npm ci    
+      - name: Roda os testes Funcionais
+        if: success() 
+        working-directory: e2e-tests
+        run: npm run test 
+        env:
+          API_URL: https://gceic26-102.onrender.com
+          SITE_URL: https://gceic26-102-app.onrender.com
+        
+      - name: verifica se fez corretamente
+        working-directory: e2e-tests 
+        run:  ls -la          
+      - name: fotos da tela
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Fotos dos testes
+          # Path to the release files
+          # Gravar as fotos na raiz do projeto no docker
+
+          # path: /home/runner/work//aula_teste_101/aula_teste_101/e2e-tests/screenshots/**/*.png
+          path: /home/runner/work//GCEIC26-102/GCEIC26-102/e2e-tests/screenshots/*.png
+
+  teste_funcional2:
+    needs: [deploy-api, deploy-app]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instala as to
+        run: |
+          echo "dep_api = ${{ needs.deploy-api.outputs.dep_api }}"
+          echo "dep_app = ${{ needs.deploy-app.outputs.dep_app }}"

@@ -17,7 +17,7 @@ export default function AboutPage() {
   return (
     <main className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-slate-800">Sobre</h1>
+        <h1 id="about-heading" className="text-3xl font-bold text-slate-800">Sobre</h1>
         <p className="text-slate-500">Informações do projeto</p>
       </div>
 

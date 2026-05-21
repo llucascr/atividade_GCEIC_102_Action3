@@ -13,9 +13,9 @@ export default function CalculatorsPage() {
 
       <Tabs defaultValue="yield">
         <TabsList className="grid grid-cols-3 w-full">
-          <TabsTrigger value="yield">Dividend Yield</TabsTrigger>
-          <TabsTrigger value="payout">Payout</TabsTrigger>
-          <TabsTrigger value="drip">DRIP</TabsTrigger>
+          <TabsTrigger id="tab-yield" value="yield">Dividend Yield</TabsTrigger>
+          <TabsTrigger id="tab-payout" value="payout">Payout</TabsTrigger>
+          <TabsTrigger id="tab-drip" value="drip">DRIP</TabsTrigger>
         </TabsList>
         <TabsContent value="yield"><DividendYieldTab /></TabsContent>
         <TabsContent value="payout"><PayoutRatioTab /></TabsContent>
