@@ -11,6 +11,10 @@ const config = {
   transform: {
     '^.+\\.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.test.json' }],
   },
+  reporters: [
+    'default',
+    ['jest-junit', { outputDirectory: '.', outputName: 'junit.xml' }],
+  ],
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,

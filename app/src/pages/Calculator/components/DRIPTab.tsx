@@ -82,19 +82,20 @@ export default function DRIPTab() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label>Investimento inicial (R$)</Label>
-            <Input type="number" placeholder="10000" {...field("initialInvestment")} />
+            <Input id="drip-initial" type="number" placeholder="10000" {...field("initialInvestment")} />
           </div>
           <div className="space-y-2">
             <Label>Dividend Yield anual (%)</Label>
-            <Input type="number" placeholder="8" {...field("annualDividendYield")} />
+            <Input id="drip-yield" type="number" placeholder="8" {...field("annualDividendYield")} />
           </div>
           <div className="space-y-2">
             <Label>Anos</Label>
-            <Input type="number" placeholder="10" {...field("years")} />
+            <Input id="drip-years" type="number" placeholder="10" {...field("years")} />
           </div>
           <div className="space-y-2">
             <Label>Frequência de pagamento</Label>
             <select
+              id="drip-frequency"
               className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background"
               value={form.frequency}
               onChange={e => setForm(f => ({ ...f, frequency: e.target.value }))}
@@ -106,28 +107,28 @@ export default function DRIPTab() {
           </div>
           <div className="space-y-2">
             <Label>Crescimento anual do dividendo (%) <span className="text-slate-400 font-normal">opcional</span></Label>
-            <Input type="number" placeholder="0" {...field("annualDividendGrowth")} />
+            <Input id="drip-growth" type="number" placeholder="0" {...field("annualDividendGrowth")} />
           </div>
           <div className="space-y-2">
             <Label>Crescimento anual da cota (%) <span className="text-slate-400 font-normal">opcional</span></Label>
-            <Input type="number" placeholder="0" {...field("annualShareGrowth")} />
+            <Input id="drip-share-growth" type="number" placeholder="0" {...field("annualShareGrowth")} />
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label>Aporte mensal (R$) <span className="text-slate-400 font-normal">opcional</span></Label>
-            <Input type="number" placeholder="0" {...field("monthlyContribution")} />
+            <Input id="drip-monthly" type="number" placeholder="0" {...field("monthlyContribution")} />
           </div>
         </div>
 
-        <Button className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handleCalc}>
+        <Button id="drip-simular" className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handleCalc}>
           Simular
         </Button>
 
         {result && (
-          <div className="space-y-4">
+          <div id="drip-result" className="space-y-4">
             <div className="rounded-xl bg-slate-50 p-6 grid grid-cols-2 md:grid-cols-4 gap-4">
               <div>
                 <p className="text-xs text-slate-400">Valor futuro</p>
-                <p className="text-xl font-bold text-emerald-700">{fmt(result.futureValue)}</p>
+                <p id="drip-future-value" className="text-xl font-bold text-emerald-700">{fmt(result.futureValue)}</p>
               </div>
               <div>
                 <p className="text-xs text-slate-400">Total aportado</p>
@@ -144,7 +145,7 @@ export default function DRIPTab() {
             </div>
 
             <div className="rounded-xl border overflow-hidden">
-              <table className="w-full text-sm">
+              <table id="drip-table" className="w-full text-sm">
                 <thead className="bg-slate-100 text-slate-500">
                   <tr>
                     <th className="px-4 py-2 text-left">Ano</th>

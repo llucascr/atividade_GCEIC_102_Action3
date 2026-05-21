@@ -32,23 +32,23 @@ export default function DividendYieldTab() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label>Dividendo anual</Label>
-            <Input type="number" placeholder="2.80" value={dividend} onChange={e => setDividend(e.target.value)} />
+            <Input id="dy-dividend" type="number" placeholder="2.80" value={dividend} onChange={e => setDividend(e.target.value)} />
           </div>
           <div className="space-y-2">
             <Label>Preço da ação</Label>
-            <Input type="number" placeholder="32.50" value={price} onChange={e => setPrice(e.target.value)} />
+            <Input id="dy-price" type="number" placeholder="32.50" value={price} onChange={e => setPrice(e.target.value)} />
           </div>
         </div>
 
-        <Button className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handleCalc}>
+        <Button id="dy-calcular" className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handleCalc}>
           Calcular
         </Button>
 
         {result && (
-          <div className="rounded-xl bg-slate-50 p-6 space-y-1">
+          <div id="dy-result" className="rounded-xl bg-slate-50 p-6 space-y-1">
             <p className="text-sm text-slate-500">Resultado</p>
-            <h2 className="text-4xl font-bold text-emerald-700">{result.value}%</h2>
-            <p className={`text-sm font-medium capitalize ${classColor[result.classification]}`}>
+            <h2 id="dy-result-value" className="text-4xl font-bold text-emerald-700">{result.value}%</h2>
+            <p id="dy-result-class" className={`text-sm font-medium capitalize ${classColor[result.classification]}`}>
               Classificação: {result.classification}
             </p>
           </div>

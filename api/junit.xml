@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="63" failures="0" errors="0" time="1.676">
+  <testsuite name="login" errors="0" failures="0" skipped="0" timestamp="2026-05-21T16:35:32" time="1.344" tests="13">
+    <testcase classname="login sucesso (200) responde com 200 e mensagem de sucesso quando login e senha estão corretos" name="login sucesso (200) responde com 200 e mensagem de sucesso quando login e senha estão corretos" time="0.004">
+    </testcase>
+    <testcase classname="login erro de autenticação (401) responde com 401 quando o login está incorreto" name="login erro de autenticação (401) responde com 401 quando o login está incorreto" time="0">
+    </testcase>
+    <testcase classname="login erro de autenticação (401) responde com 401 quando a senha está incorreta" name="login erro de autenticação (401) responde com 401 quando a senha está incorreta" time="0">
+    </testcase>
+    <testcase classname="login erro de autenticação (401) responde com 401 quando login e senha estão incorretos" name="login erro de autenticação (401) responde com 401 quando login e senha estão incorretos" time="0">
+    </testcase>
+    <testcase classname="login erro de autenticação (401) é case-sensitive no login" name="login erro de autenticação (401) é case-sensitive no login" time="0">
+    </testcase>
+    <testcase classname="login erro de autenticação (401) responde com 401 quando login e senha estão vazios (strings vazias)" name="login erro de autenticação (401) responde com 401 quando login e senha estão vazios (strings vazias)" time="0.001">
+    </testcase>
+    <testcase classname="login erro de validação (400) responde com 400 quando o body é undefined" name="login erro de validação (400) responde com 400 quando o body é undefined" time="0">
+    </testcase>
+    <testcase classname="login erro de validação (400) responde com 400 quando o body é null" name="login erro de validação (400) responde com 400 quando o body é null" time="0">
+    </testcase>
+    <testcase classname="login erro de validação (400) responde com 400 quando o body não contém o campo login" name="login erro de validação (400) responde com 400 quando o body não contém o campo login" time="0">
+    </testcase>
+    <testcase classname="login erro de validação (400) responde com 400 quando o body não contém o campo password" name="login erro de validação (400) responde com 400 quando o body não contém o campo password" time="0">
+    </testcase>
+    <testcase classname="login erro de validação (400) responde com 400 quando login não é uma string" name="login erro de validação (400) responde com 400 quando login não é uma string" time="0">
+    </testcase>
+    <testcase classname="login erro de validação (400) responde com 400 quando password não é uma string" name="login erro de validação (400) responde com 400 quando password não é uma string" time="0">
+    </testcase>
+    <testcase classname="login erro de validação (400) responde com 400 quando o body é uma string" name="login erro de validação (400) responde com 400 quando o body é uma string" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="dividendYield" errors="0" failures="0" skipped="0" timestamp="2026-05-21T16:35:32" time="1.347" tests="17">
+    <testcase classname="dividendYield computeDividendYield (pure function) cálculo básico calcula DY corretamente para valores positivos" name="dividendYield computeDividendYield (pure function) cálculo básico calcula DY corretamente para valores positivos" time="0.003">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) cálculo básico arredonda DY para 2 casas decimais" name="dividendYield computeDividendYield (pure function) cálculo básico arredonda DY para 2 casas decimais" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) cálculo básico retorna DY = 0 quando dividendo é zero" name="dividendYield computeDividendYield (pure function) cálculo básico retorna DY = 0 quando dividendo é zero" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) classificação classifica como &quot;low&quot; quando DY &lt; 3%" name="dividendYield computeDividendYield (pure function) classificação classifica como &quot;low&quot; quando DY &lt; 3%" time="0.001">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) classificação classifica como &quot;moderate&quot; quando 3% ≤ DY &lt; 6%" name="dividendYield computeDividendYield (pure function) classificação classifica como &quot;moderate&quot; quando 3% ≤ DY &lt; 6%" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) classificação classifica como &quot;high&quot; quando 6% ≤ DY &lt; 10%" name="dividendYield computeDividendYield (pure function) classificação classifica como &quot;high&quot; quando 6% ≤ DY &lt; 10%" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) classificação classifica como &quot;very_high&quot; quando DY ≥ 10%" name="dividendYield computeDividendYield (pure function) classificação classifica como &quot;very_high&quot; quando DY ≥ 10%" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) limites de classificação (boundaries) classifica DY = 3% como &quot;moderate&quot;" name="dividendYield computeDividendYield (pure function) limites de classificação (boundaries) classifica DY = 3% como &quot;moderate&quot;" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) limites de classificação (boundaries) classifica DY = 6% como &quot;high&quot;" name="dividendYield computeDividendYield (pure function) limites de classificação (boundaries) classifica DY = 6% como &quot;high&quot;" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) limites de classificação (boundaries) classifica DY = 10% como &quot;very_high&quot;" name="dividendYield computeDividendYield (pure function) limites de classificação (boundaries) classifica DY = 10% como &quot;very_high&quot;" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) validações lança erro quando sharePrice é zero" name="dividendYield computeDividendYield (pure function) validações lança erro quando sharePrice é zero" time="0.004">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) validações lança erro quando sharePrice é negativo" name="dividendYield computeDividendYield (pure function) validações lança erro quando sharePrice é negativo" time="0">
+    </testcase>
+    <testcase classname="dividendYield computeDividendYield (pure function) validações lança erro quando dividendo é negativo" name="dividendYield computeDividendYield (pure function) validações lança erro quando dividendo é negativo" time="0.001">
+    </testcase>
+    <testcase classname="dividendYield calculateDividendYield (HTTP handler) sucesso (200) responde com 200 e o resultado quando o body é válido" name="dividendYield calculateDividendYield (HTTP handler) sucesso (200) responde com 200 e o resultado quando o body é válido" time="0.001">
+    </testcase>
+    <testcase classname="dividendYield calculateDividendYield (HTTP handler) erro (400) responde com 400 quando sharePrice é zero" name="dividendYield calculateDividendYield (HTTP handler) erro (400) responde com 400 quando sharePrice é zero" time="0">
+    </testcase>
+    <testcase classname="dividendYield calculateDividendYield (HTTP handler) erro (400) responde com 400 quando dividendo é negativo" name="dividendYield calculateDividendYield (HTTP handler) erro (400) responde com 400 quando dividendo é negativo" time="0">
+    </testcase>
+    <testcase classname="dividendYield calculateDividendYield (HTTP handler) erro (400) responde com 400 e mensagem genérica quando body não é um objeto" name="dividendYield calculateDividendYield (HTTP handler) erro (400) responde com 400 e mensagem genérica quando body não é um objeto" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="payoutRatio" errors="0" failures="0" skipped="0" timestamp="2026-05-21T16:35:32" time="1.369" tests="16">
+    <testcase classname="payoutRatio computePayoutRatio (pure function) cálculo básico calcula payout e retention corretamente" name="payoutRatio computePayoutRatio (pure function) cálculo básico calcula payout e retention corretamente" time="0.002">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) cálculo básico retorna payout=0 e retention=100 quando dividendo é zero" name="payoutRatio computePayoutRatio (pure function) cálculo básico retorna payout=0 e retention=100 quando dividendo é zero" time="0.001">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) cálculo básico arredonda payout e retention para 2 casas decimais" name="payoutRatio computePayoutRatio (pure function) cálculo básico arredonda payout e retention para 2 casas decimais" time="0">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) cálculo básico aceita payout acima de 100% (dividendo &gt; lucro) com retention negativo" name="payoutRatio computePayoutRatio (pure function) cálculo básico aceita payout acima de 100% (dividendo &gt; lucro) com retention negativo" time="0">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) classificação de risco classifica risco como &quot;low&quot; quando payout ≤ 50%" name="payoutRatio computePayoutRatio (pure function) classificação de risco classifica risco como &quot;low&quot; quando payout ≤ 50%" time="0">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) classificação de risco classifica risco como &quot;moderate&quot; quando 50% &lt; payout ≤ 75%" name="payoutRatio computePayoutRatio (pure function) classificação de risco classifica risco como &quot;moderate&quot; quando 50% &lt; payout ≤ 75%" time="0">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) classificação de risco classifica risco como &quot;high&quot; quando payout &gt; 75%" name="payoutRatio computePayoutRatio (pure function) classificação de risco classifica risco como &quot;high&quot; quando payout &gt; 75%" time="0">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) limites de classificação (boundaries) classifica payout = 50% como &quot;low&quot; e sustentável" name="payoutRatio computePayoutRatio (pure function) limites de classificação (boundaries) classifica payout = 50% como &quot;low&quot; e sustentável" time="0">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) limites de classificação (boundaries) classifica payout = 75% como &quot;moderate&quot; e sustentável" name="payoutRatio computePayoutRatio (pure function) limites de classificação (boundaries) classifica payout = 75% como &quot;moderate&quot; e sustentável" time="0">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) limites de classificação (boundaries) classifica payout = 75.01% como &quot;high&quot; e não sustentável" name="payoutRatio computePayoutRatio (pure function) limites de classificação (boundaries) classifica payout = 75.01% como &quot;high&quot; e não sustentável" time="0.001">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) validações lança erro quando EPS é zero" name="payoutRatio computePayoutRatio (pure function) validações lança erro quando EPS é zero" time="0.004">
+    </testcase>
+    <testcase classname="payoutRatio computePayoutRatio (pure function) validações lança erro quando EPS é negativo" name="payoutRatio computePayoutRatio (pure function) validações lança erro quando EPS é negativo" time="0">
+    </testcase>
+    <testcase classname="payoutRatio calculatePayoutRatio (HTTP handler) sucesso (200) responde com 200 e o resultado completo quando o body é válido" name="payoutRatio calculatePayoutRatio (HTTP handler) sucesso (200) responde com 200 e o resultado completo quando o body é válido" time="0">
+    </testcase>
+    <testcase classname="payoutRatio calculatePayoutRatio (HTTP handler) erro (400) responde com 400 quando EPS é zero" name="payoutRatio calculatePayoutRatio (HTTP handler) erro (400) responde com 400 quando EPS é zero" time="0.001">
+    </testcase>
+    <testcase classname="payoutRatio calculatePayoutRatio (HTTP handler) erro (400) responde com 400 quando EPS é negativo" name="payoutRatio calculatePayoutRatio (HTTP handler) erro (400) responde com 400 quando EPS é negativo" time="0">
+    </testcase>
+    <testcase classname="payoutRatio calculatePayoutRatio (HTTP handler) erro (400) responde com 400 quando body não é um objeto" name="payoutRatio calculatePayoutRatio (HTTP handler) erro (400) responde com 400 quando body não é um objeto" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="drip" errors="0" failures="0" skipped="0" timestamp="2026-05-21T16:35:32" time="1.375" tests="17">
+    <testcase classname="drip computeDRIP (pure function) happy path simula DRIP anual simples por 1 ano sem aportes" name="drip computeDRIP (pure function) happy path simula DRIP anual simples por 1 ano sem aportes" time="0.003">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) happy path simula DRIP anual por 3 anos (juros compostos)" name="drip computeDRIP (pure function) happy path simula DRIP anual por 3 anos (juros compostos)" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) frequência de pagamento produz valor futuro maior com frequência mensal vs anual" name="drip computeDRIP (pure function) frequência de pagamento produz valor futuro maior com frequência mensal vs anual" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) frequência de pagamento simula DRIP trimestral corretamente (4 períodos por ano)" name="drip computeDRIP (pure function) frequência de pagamento simula DRIP trimestral corretamente (4 períodos por ano)" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) parâmetros opcionais usa default 0 para growth e contribution quando omitidos" name="drip computeDRIP (pure function) parâmetros opcionais usa default 0 para growth e contribution quando omitidos" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) parâmetros opcionais soma aportes mensais corretamente com frequency=12" name="drip computeDRIP (pure function) parâmetros opcionais soma aportes mensais corretamente com frequency=12" time="0.001">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) parâmetros opcionais agrega aportes mensais por período quando frequency=1" name="drip computeDRIP (pure function) parâmetros opcionais agrega aportes mensais por período quando frequency=1" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) parâmetros opcionais aumenta dividendos ano a ano quando annualDividendGrowth &gt; 0" name="drip computeDRIP (pure function) parâmetros opcionais aumenta dividendos ano a ano quando annualDividendGrowth &gt; 0" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) parâmetros opcionais aplica crescimento de cotas (annualShareGrowth) ao valor final do ano" name="drip computeDRIP (pure function) parâmetros opcionais aplica crescimento de cotas (annualShareGrowth) ao valor final do ano" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) estrutura do yearByYear retorna um item por ano com os campos year, value, dividends, contributed" name="drip computeDRIP (pure function) estrutura do yearByYear retorna um item por ano com os campos year, value, dividends, contributed" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) estrutura do yearByYear mantém contributed monotonicamente crescente com aportes" name="drip computeDRIP (pure function) estrutura do yearByYear mantém contributed monotonicamente crescente com aportes" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) retorno total calcula totalReturn como ((futureValue / totalContributed) - 1) * 100" name="drip computeDRIP (pure function) retorno total calcula totalReturn como ((futureValue / totalContributed) - 1) * 100" time="0.001">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) retorno total mantém a fórmula de retorno quando há aportes" name="drip computeDRIP (pure function) retorno total mantém a fórmula de retorno quando há aportes" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) edge cases retorna estado inicial quando years = 0" name="drip computeDRIP (pure function) edge cases retorna estado inicial quando years = 0" time="0">
+    </testcase>
+    <testcase classname="drip computeDRIP (pure function) edge cases arredonda todos os campos numéricos a 2 casas decimais" name="drip computeDRIP (pure function) edge cases arredonda todos os campos numéricos a 2 casas decimais" time="0">
+    </testcase>
+    <testcase classname="drip calculateDRIP (HTTP handler) sucesso responde com o resultado em JSON quando o body é válido" name="drip calculateDRIP (HTTP handler) sucesso responde com o resultado em JSON quando o body é válido" time="0.001">
+    </testcase>
+    <testcase classname="drip calculateDRIP (HTTP handler) erro (400) responde com 400 e mensagem genérica quando body é undefined" name="drip calculateDRIP (HTTP handler) erro (400) responde com 400 e mensagem genérica quando body é undefined" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>

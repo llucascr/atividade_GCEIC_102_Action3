@@ -39,7 +39,7 @@ export default function DashboardPage() {
               Sistema online
             </div>
 
-            <h1 className="text-5xl font-bold text-white leading-tight">
+            <h1 id="dashboard-heading" className="text-5xl font-bold text-white leading-tight">
               Dashboard Financeiro
             </h1>
 
@@ -91,7 +91,7 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="p-6 space-y-4">
+          <div id="historico-list" className="p-6 space-y-4">
             {mockHistory.map((item, index) => (
               <div
                 key={index}

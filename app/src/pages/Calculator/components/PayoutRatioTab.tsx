@@ -38,38 +38,38 @@ export default function PayoutRatioTab() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label>Dividendo por ação (DPS)</Label>
-            <Input type="number" placeholder="2.50" value={dps} onChange={e => setDps(e.target.value)} />
+            <Input id="payout-dps" type="number" placeholder="2.50" value={dps} onChange={e => setDps(e.target.value)} />
           </div>
           <div className="space-y-2">
             <Label>Lucro por ação (EPS)</Label>
-            <Input type="number" placeholder="4.00" value={eps} onChange={e => setEps(e.target.value)} />
+            <Input id="payout-eps" type="number" placeholder="4.00" value={eps} onChange={e => setEps(e.target.value)} />
           </div>
         </div>
 
-        <Button className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handleCalc}>
+        <Button id="payout-calcular" className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={handleCalc}>
           Calcular
         </Button>
 
-        {error && <p className="text-sm text-red-500">{error}</p>}
+        {error && <p id="payout-error" className="text-sm text-red-500">{error}</p>}
 
         {result && (
-          <div className="rounded-xl bg-slate-50 p-6 space-y-3">
+          <div id="payout-result" className="rounded-xl bg-slate-50 p-6 space-y-3">
             <p className="text-sm text-slate-500">Resultado</p>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <p className="text-xs text-slate-400">Payout Ratio</p>
-                <p className="text-3xl font-bold text-emerald-700">{result.payoutRatio}%</p>
+                <p id="payout-value" className="text-3xl font-bold text-emerald-700">{result.payoutRatio}%</p>
               </div>
               <div>
                 <p className="text-xs text-slate-400">Retention Ratio</p>
-                <p className="text-3xl font-bold text-slate-700">{result.retentionRatio}%</p>
+                <p id="payout-retention" className="text-3xl font-bold text-slate-700">{result.retentionRatio}%</p>
               </div>
             </div>
             <div className="flex items-center gap-3 pt-1">
-              <span className={`text-sm font-medium capitalize ${riskColor[result.risk]}`}>
+              <span id="payout-risk" className={`text-sm font-medium capitalize ${riskColor[result.risk]}`}>
                 Risco: {result.risk}
               </span>
-              <span className={`text-sm font-medium ${result.isSustainable ? "text-emerald-600" : "text-red-500"}`}>
+              <span id="payout-status" className={`text-sm font-medium ${result.isSustainable ? "text-emerald-600" : "text-red-500"}`}>
                 • {result.isSustainable ? "Sustentável" : "Insustentável"}
               </span>
             </div>
