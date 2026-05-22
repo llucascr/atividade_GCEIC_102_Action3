@@ -8,10 +8,7 @@ import path from 'path'
 export default defineConfig({
   server: {
     port: Number(process.env.PORT) || 3000,
-    host: true,
-    proxy: {
-      '/api': 'http://localhost:3001',
-    },
+    host: true
   },
   plugins: [
     react(),
@@ -23,4 +20,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: '/cdd/',
 })

@@ -1,4 +1,6 @@
-const BASE = '/api';
+// O objeto ENV é injetado pelo servidor app/index.js na rota /env.js
+const apiUrl = (window as any).ENV?.API_URL || 'http://localhost:3001';
+const BASE = apiUrl + '/api';
 
 async function post<T>(path: string, body: unknown): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
