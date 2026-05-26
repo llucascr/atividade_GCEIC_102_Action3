@@ -87,12 +87,12 @@ export default function DividendYieldTab() {
         {result && (
           <div id="dy-result" className="rounded-xl bg-slate-50 p-6 space-y-1">
             <p className="text-sm text-slate-500">Resultado</p>
-            <h2
+            <p
               id="dy-result-value"
-              className="text-4xl font-bold text-emerald-700"
+              className="text-4xl font-bold text-slate-800"
             >
               {result.dividendYield}%
-            </h2>
+            </p>
             <p
               id="dy-result-class"
               className={`text-sm font-medium capitalize ${classColor[result.classification]}`}

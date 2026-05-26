@@ -34,12 +34,16 @@ export default function AboutPage() {
 
       <Card className="border-0 shadow-sm">
         <CardHeader>
-          <CardTitle>
-            Equipe
-          </CardTitle>
+          <CardTitle>Equipe</CardTitle>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className="space-y-6">
+          <img
+            src="/teamCDD.jpeg"
+            alt="Foto da equipe CDD"
+            className="w-full rounded-xl object-cover max-h-72"
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {integrantes.map((item, index) => (
               <Card key={index} className="border bg-slate-50">
@@ -57,6 +61,7 @@ export default function AboutPage() {
           </div>
         </CardContent>
       </Card>
+
     </main>
   );
 }

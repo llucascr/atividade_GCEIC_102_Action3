@@ -1,5 +1,5 @@
 // O objeto ENV é injetado pelo servidor app/index.js na rota /env.js
-const apiUrl = (window as any).ENV?.API_URL || 'http://localhost:3001';
+const apiUrl = 'https://gceic26-102.onrender.com';
 const BASE = apiUrl + '/api';
 
 async function post<T>(path: string, body: unknown): Promise<T> {
