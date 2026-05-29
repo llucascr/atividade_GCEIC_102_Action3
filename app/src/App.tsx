@@ -5,6 +5,7 @@ import DashboardPage from "./pages/Dashboard";
 import CalculatorsPage from "./pages/Calculator";
 import AboutPage from "./pages/About";
 import HelpPage from "./pages/Help";
+import SplashPage from "./pages/Splash";
 import { ChartLine } from "lucide-react";
 
 type Page = "login" | "dashboard" | "calculators" | "about" | "help";
@@ -19,6 +20,7 @@ const navItems: { id: Page; label: string }[] = [
 export default function App() {
   const [page, setPage] = useState<Page>("login");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -29,6 +31,14 @@ export default function App() {
     setIsLoggedIn(false);
     setPage("login");
   };
+
+  if (loading) {
+    return (
+      <SplashPage
+        onFinish={() => setLoading(false)}
+      />
+    );
+  }
 
   if (!isLoggedIn) {
     return <LoginPage onLogin={handleLogin} />;
